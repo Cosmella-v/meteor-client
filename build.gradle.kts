@@ -18,13 +18,13 @@ base {
 }
 
 repositories {
+     maven {
+        name = "meteor-maven-snapshots"
+        url = uri("https://maven.meteordev.org/snapshots")
+    }
     maven {
         name = "meteor-maven"
         url = uri("https://maven.meteordev.org/releases")
-    }
-    maven {
-        name = "meteor-maven-snapshots"
-        url = uri("https://maven.meteordev.org/snapshots")
     }
     maven {
         name = "Terraformers"
