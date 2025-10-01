@@ -37,10 +37,7 @@ jobs:
           java-version: '21'
 
       - name: Build
-        run: ./gradlew build -Pcommit=${{ github.sha }} \
-                             -Pminecraft_version=${{ matrix.mc-version.minecraft }} \
-                             -Pyarn_mappings=${{ matrix.mc-version.yarn }} \
-                             -Pfapi_version=${{ matrix.mc-version.fapi }}
+        run: ./gradlew build -Pcommit=${{ github.sha }} -Pminecraft_version=${{ matrix.mc-version.minecraft }} -Pyarn_mappings=${{ matrix.mc-version.yarn }} -Pfapi_version=${{ matrix.mc-version.fapi }}
 
       - name: Archive Build
         uses: actions/upload-artifact@v4
