@@ -16,8 +16,8 @@ jobs:
     strategy:
       matrix:
         mc-version:
-          - { minecraft: "1.20.1", yarn: "1.20.1+build.1", fapi: "0.92.6+1.20.1", baritone: "", sodium: "mc1.20.1-0.5.13-fabric", lithium: "mc1.20.1-0.11.2", iris: "1.6.4+1.20", modmenu: "7.1.0", orbit: "0.2.3", starscript: "0.2.3", discordipc: "1.1", reflections: "0.10.2", netty: "4.1.118.Final", viafabricplus: "4.1.5", waybackauthlib: "1.0.1" }
-          - { minecraft: "1.21.1", yarn: "1.21.1+build.1", fapi: "0.116.6+1.21.1", baritone: "1.21.5", sodium: "mc1.21.6-0.6.13-fabric", lithium: "mc1.21.6-0.17.0-fabric", iris: "1.9.0+1.21.6-fabric", modmenu: "15.0.0-beta.3", orbit: "0.2.4", starscript: "0.2.4", discordipc: "1.1", reflections: "0.10.2", netty: "4.1.118.Final", viafabricplus: "4.1.5", waybackauthlib: "1.0.1" }
+          - { minecraft: "1.20.1", yarn: "1.20.1+build.1", fapi: "0.92.6+1.20.1", baritone: "1.20.1", sodium: "mc1.20.1-0.5.13-fabric", lithium: "mc1.20.1-0.11.2", iris: "1.6.4+1.20", modmenu: "7.1.0", orbit: "0.2.3", starscript: "0.2.3", discordipc: "1.1", reflections: "0.10.2", netty: "4.1.118.Final", viafabricplus: "4.1.5", waybackauthlib: "1.0.1" }
+          - { minecraft: "1.21.1", yarn: "1.21.1+build.1", fapi: "0.116.6+1.21.1", baritone: "1.21.1", sodium: "mc1.21.6-0.6.13-fabric", lithium: "mc1.21.6-0.17.0-fabric", iris: "1.9.0+1.21.6-fabric", modmenu: "15.0.0-beta.3", orbit: "0.2.4", starscript: "0.2.4", discordipc: "1.1", reflections: "0.10.2", netty: "4.1.118.Final", viafabricplus: "4.1.5", waybackauthlib: "1.0.1" }
 
     steps:
       - name: Checkout Repository
@@ -41,7 +41,7 @@ jobs:
             -Pminecraft_version=${{ matrix.mc-version.minecraft }} \
             -Pyarn_mappings=${{ matrix.mc-version.yarn }} \
             -Pfapi_version=${{ matrix.mc-version.fapi }} \
-            -Pbaritone_version=${{ matrix.mc-version.baritone }} \
+            $( [ -n "${{ matrix.mc-version.baritone }}" ] && echo "-Pbaritone_version=${{ matrix.mc-version.baritone }}" ) \
             -Psodium_version=${{ matrix.mc-version.sodium }} \
             -Plithium_version=${{ matrix.mc-version.lithium }} \
             -Piris_version=${{ matrix.mc-version.iris }} \
